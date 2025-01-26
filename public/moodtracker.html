@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentiment Analysis</title>
+  <style>
+    /* Add a gradient background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #a567be, #ffffff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Style the main container */
+    #container {
+      background: #ffffff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #555;
+      font-weight: bold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      background-color: #c848d1;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #c848d1;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: #444;
+    }
+  </style>
+  <script>
+    // Adding the Sentiment.js library code manually
+    class Sentiment {
+      constructor() {
+        this.positiveWords = [
+          'happy', 'amazing', 'great', 'good', 'love', 'wonderful',
+          'joyful', 'cheerful', 'content', 'delighted', 'elated',
+          'ecstatic', 'overjoyed', 'exuberant', 'blissful', 'radiant',
+          'pleased', 'satisfied', 'glad', 'serene', 'charmed'
+        ];
+        this.negativeWords = [
+          'sad', 'bad', 'terrible', 'hate', 'angry', 'upset',
+          'unhappy', 'downcast', 'disheartened', 'melancholy', 'mournful',
+          'heartbroken', 'grief-stricken', 'desolate', 'devastated',
+          'bereft', 'blue', 'disappointed', 'gloomy', 'somber', 'crying', 'wistful'
+        ];
+      }
+
+      analyze(text) {
+        const words = text.toLowerCase().split(/\s+/);
+        let score = 0;
+
+        words.forEach((word) => {
+          if (this.positiveWords.includes(word)) {
+            score++;
+          } else if (this.negativeWords.includes(word)) {
+            score--;
+          }
+        });
+
+        return { score };
+      }
+    }
+
+    // Analyze text input for sentiment
+    function analyzeText() {
+      const text = document.getElementById('text').value;
+
+      if (text.trim() === "") {
+        alert("Please enter some text for analysis.");
+        return;
+      }
+
+      const sentiment = new Sentiment();
+      const result = sentiment.analyze(text);
+      const score = result.score;
+
+      // Determine the sentiment message based on score
+      let message;
+      if (score > 0) {
+        message = `Positive Sentiment (Score: ${score}): You’re doing amazing! It’s wonderful to see you in such a positive and balanced state. Keep nurturing this energy by continuing the practices that bring you peace and happiness.`;
+      } else if (score < 0) {
+        message = `Negative Sentiment (Score: ${score}): It’s okay to feel this way. Counseling can provide tools to cope with sadness and stress. It’s a space just for you, where you won’t feel judged. Please contact a professional counselor provided in the HELPLINE TAB.`;
+      } else {
+        message = `Neutral Sentiment (Score: ${score}): You're in a balanced state right now—this is a great place to be! To keep this balance, consider taking a small moment for yourself today. Maybe go for a short walk, enjoy a hobby, or simply reflect on something positive in your life.`;
+      }
+
+      // Display the result
+      document.getElementById('result').innerText = `Sentiment: ${message}`;
+      alert(message);
+    }
+
+    // Start voice input for text analysis
+    function startVoiceInput() {
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => {
+        alert("Voice recognition started. Please speak clearly.");
+      };
+
+      recognition.onspeechend = () => {
+        recognition.stop();
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('text').value = transcript;
+        alert(`You said: "${transcript}"`);
+      };
+
+      recognition.onerror = (event) => {
+        alert(`Error occurred in recognition: ${event.error}`);
+      };
+
+      recognition.start();
+    }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <h1>Sentiment Analysis</h1>
+    <label for="text">Enter your text or use voice input:</label><br>
+    <textarea id="text" rows="4" cols="50"></textarea><br><br>
+    <button onclick="analyzeText()">Analyze Text</button>
+    <button onclick="startVoiceInput()">Use Voice Input</button>
+    <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+  </div>
+</body>
+</html>

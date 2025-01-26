@@ -1,0 +1,28 @@
+/* Add your CSS styles here to customize the appearance of the interface */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    margin: 20px;
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.level-button {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.yoga-images img {
+    width: 200px;
+    margin: 10px;
+}

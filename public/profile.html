@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3e8f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .container img {
+      max-width: 100px;
+      margin-bottom: 20px;
+    }
+    .profile-title {
+      font-size: 24px;
+      color: #6a1b9a;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .profile-info {
+      text-align: left;
+      margin: 10px 0;
+    }
+    .profile-info b {
+      color: #333;
+    }
+    .sign-out-button {
+      margin-top: 20px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .sign-out-button:hover {
+      background-color: #4a0072;
+    }
+    /* Hamburger menu */
+    .hamburger {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: #6a1b9a;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hamburger Menu -->
+  <div class="hamburger" onclick="redirectToSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Profile Content -->
+  <div class="container">
+    <img src="logo.jpeg.png" alt="Profile Logo">
+    <h1 class="profile-title">Profile</h1>
+    <div class="profile-info"><b>Name:</b> Varsha</div>
+    <div class="profile-info"><b>Date of Birth:</b> 2004-07-13</div>
+    <div class="profile-info"><b>Country:</b> India</div>
+    <div class="profile-info"><b>Gender:</b> Female</div>
+    <button class="sign-out-button" onclick="signOut()">Sign Out</button>
+  </div>
+
+  <script>
+    // Redirect to the sidebar
+    function redirectToSidebar() {
+      window.location.href = "sidebar.html";
+    }
+
+    // Sign Out functionality
+    function signOut() {
+      alert("Signed out successfully!");
+      window.location.href = "register.html"; // Redirect to login page
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Point</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d1b7ea;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .yoga-icon {
+            width: 40px;
+            height: 40px;
+            background-image: url('yoga-icon.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 24px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="yoga.jpeg" alt="Yoga Image">
+        </div>
+        <div class="yoga-icon"></div>
+        <p>Yoga Point</p>
+        <button onclick="loadNextLevel()">Start</button>
+    </div>
+<script>
+function loadNextLevel() {
+    window.location.href = "interface.html";
+}
+</script>
+</body>
+</html>

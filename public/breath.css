@@ -1,0 +1,79 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e3d7f7; /* Lavender background */
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 500px;
+    background: #d1b7ea; /* Lavender background */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    color: #4a3f72;
+  }
+  
+  .header {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .breathing-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cycle {
+    margin: 20px 0;
+  }
+  
+  #actionText {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  #timer {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #8a5b99;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #8a5b99;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+  }
+  
+  button:hover {
+    background-color: #6f3e73;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

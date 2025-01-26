@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Levels</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d1b7ea;
+            overflow: hidden;
+        }
+
+        .scroll-container {
+            width: 90%;
+            height: 80%;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .level {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border: 2px solid #d1b7ea;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #d1b7ea;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .level:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .pose-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .pose-container h2 {
+            color: #d1b7ea;
+            margin-bottom: 20px;
+        }
+
+        .pose {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pose img {
+    width: 650px; /* Increased width */
+    height: 650px; /* Increased height */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d1b7ea;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #d1b7ea;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <div class="level" onclick="showPoses('Beginners')">Beginners</div>
+        <div class="level" onclick="showPoses('Intermediate')">Intermediate</div>
+        <div class="level" onclick="showPoses('Advanced')">Advanced</div>
+        <div class="level" onclick="showPoses('Pregnant')">Pregnant</div>
+    </div>
+
+    <div id="pose-container" class="pose-container">
+        <h2 id="pose-title">Yoga Poses</h2>
+        <div id="poses">
+            <!-- Yoga poses will be dynamically inserted here -->
+        </div>
+        <button class="back-button" onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        const posesData = {
+            Beginners: [
+                'b1.jpeg', 'b2.jpeg', 'b3.jpeg', 'b4.jpeg', 'b5.jpeg'
+            ],
+            Intermediate: [
+                'i1.jpeg', 'i2.jpeg', 'i3.jpeg', 'i4.jpeg', 'i5.jpeg'
+            ],
+            Advanced: [
+                'a1.jpeg', 'a6.jpeg', 'a3.jpeg', 'a4.jpeg', 'a5.jpeg'
+            ],
+            Pregnant: [
+                'p1.jpeg', 'p2.jpeg', 'p3.jpeg', 'p4.jpeg', 'p5.jpeg'
+            ]
+        };
+
+        function showPoses(level) {
+            const scrollContainer = document.querySelector('.scroll-container');
+            const poseContainer = document.getElementById('pose-container');
+            const poses = document.getElementById('poses');
+            const title = document.getElementById('pose-title');
+
+            title.innerText = `${level} Yoga Poses`;
+            poses.innerHTML = '';
+
+            posesData[level].forEach(pose => {
+                const poseDiv = document.createElement('div');
+                poseDiv.className = 'pose';
+
+                const img = document.createElement('img');
+                img.src = pose;
+                img.alt = `${level} Yoga Pose`;
+
+                poseDiv.appendChild(img);
+                poses.appendChild(poseDiv);
+            });
+
+            scrollContainer.style.display = 'none';
+            poseContainer.style.display = 'flex';
+        }
+
+        function goBack() {
+            const scrollContainer = document.querySelector('.scroll-container');
+            const poseContainer = document.getElementById('pose-container');
+
+            poseContainer.style.display = 'none';
+            scrollContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
