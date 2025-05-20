@@ -1,6 +1,8 @@
 **Sentiment Analysis Web App**
 
-A lightweight and user-friendly web application that analyzes the sentiment of your text input using the `sentiment` Node.js library. It supports both text and voice input and provides an instant emotional score and friendly feedback.
+StressBurst is a lightweight and user-friendly web application that helps users assess and manage their emotional well-being. Using the powerful Sentiment Node.js library, it supports both text and voice-based input to instantly provide an emotional score along with supportive feedback alerts.
+
+Designed with a clean dashboard UI, StressBurst includes helpful modules like breathing exercises, mood tracking, and access to mental wellness tools.
 ![image](https://github.com/user-attachments/assets/e276b438-f589-47ed-8928-1e49e0eda762)
 
 Features :
